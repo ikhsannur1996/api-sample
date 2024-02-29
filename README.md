@@ -48,5 +48,4 @@ Welcome to the J&T Express API Integration Guide. This document provides compreh
 - Plan for scalability and future enhancements in your API integration strategy.
 
 For detailed API usage instructions, examples, and error code descriptions, refer to the provided documentation.
-
-© 2024 PT. Global Jet Express. All Rights Reserved.
+Documentation URL https://developer.jet.co.id/documentation
