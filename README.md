@@ -22,6 +22,134 @@ Welcome to the J&T Express API Integration Guide. This document provides compreh
 5. **Production API Integration**: Use production key and endpoint for final testing.
 6. **Finish**: Complete all steps and ensure the API is connected to the J&T platform.
 
+## Sample API Usage 
+### Request Details
+
+### Endpoint
+
+- **URL**: Provided by the service provider
+- **Method**: `POST`
+- **Headers**: `Content-Type: application/json`
+
+### Request Payload
+
+```php
+$key = "<< Please call us >>";
+$data = array(
+    'username' => 'username',
+    'api_key' => 'api_key',
+    'orderid' => 'ORDERID-0001',
+    'shipper_name' => 'PENGIRIM',
+    'shipper_contact' => 'PENGIRIM',
+    'shipper_phone' => '+628123456789',
+    'shipper_addr' => 'JL. Pengirim no.88, RT/RW:001/010, Pluit',
+    'origin_code' => 'JKT',
+    'receiver_name' => 'PENERIMA',
+    'receiver_phone' => '+62812348888',
+    'receiver_addr' => 'JL. Penerima no.1, RT/RW:04/07, Sidoarjo',
+    'receiver_zip' => '40123',
+    'destination_code' => 'JKT',
+    'receiver_area' => 'JKT001',
+    'qty' => '1',
+    'weight' => '1',
+    'goodsdesc' => 'TESTING!!',
+    'servicetype' => '1',
+    'insurance' => '122',
+    'orderdate' => '2021-08-01 22:02:00',
+    'item_name' => 'topi',
+    'cod' => '120000',
+    'sendstarttime' => '2021-08-01 08:00:00',
+    'sendendtime' => '2021-08-01 22:00:00',
+    'expresstype' => '1',
+    'goodsvalue' => '1000'
+);
+
+$data_json = json_encode(array('detail' => array($data)));
+$data_request = array(
+    'data_param' => $data_json,
+    'data_sign' => base64_encode(md5($data_json . $key))
+);
+```
+
+### Example Request in PHP
+
+```php
+<?php
+
+$key = "<< Please call us >>";
+$data = array(
+    // Add all required fields here
+);
+
+$data_json = json_encode(array('detail' => array($data)));
+$data_request = array(
+    'data_param' => $data_json,
+    'data_sign' => base64_encode(md5($data_json . $key))
+);
+
+$ch = curl_init('API_ENDPOINT_URL');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_request));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
+?>
+```
+
+## Response Details
+
+### Success Response
+
+```json
+{
+    "success": true,
+    "desc": "Request berhasil",
+    "detail": [
+        {
+            "awb_no": "JO0027364832",
+            "orderid": "ORDERID-0001",
+            "desCode": "JKT-JKT001",
+            "etd": "2-4",
+            "status": "Sukses"
+        }
+    ]
+}
+```
+
+### Failed Response
+
+```json
+{
+    "success": true,
+    "desc": "Request berhasil",
+    "detail": [
+        {
+            "orderid": "ORDERID-0001",
+            "desCode": "JKT-JKT001",
+            "etd": "No Data",
+            "status": "Error",
+            "reason": "Orderid tidak boleh sama"
+        }
+    ]
+}
+```
+
+## Explanation of Fields
+
+- `success`: Request processing status.
+- `desc`: Description of the result.
+- `detail`: Contains request details.
+  - `awb_no`: Airway bill number (on success).
+  - `orderid`: Order ID.
+  - `desCode`: Destination code.
+  - `etd`: Estimated delivery time.
+  - `status`: "Sukses" or "Error".
+  - `reason`: Error reason (on failure).
+
 ## Pros and Cons
 
 ### Pros
