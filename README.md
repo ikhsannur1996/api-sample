@@ -22,6 +22,39 @@ Welcome to the J&T Express API Integration Guide. This document provides compreh
 5. **Production API Integration**: Use production key and endpoint for final testing.
 6. **Finish**: Complete all steps and ensure the API is connected to the J&T platform.
 
+## Usage Cases
+### 1. E-commerce Order Fulfillment Automation
+**Scenario:** An online marketplace wants to automatically create shipping orders with J&T Express whenever customers place purchases.
+
+- When a customer completes checkout on the e-commerce platform, the system automatically sends a **Basic Order API** request to J&T with shipping details.
+- J&T returns an Air Waybill (AWB) number via API.
+- The platform displays the AWB number to the customer for tracking purposes.
+- The system tracks the shipment status using the **Tracking API** to update customers in real-time.
+- If the customer cancels the order before shipment, the platform uses the **API Cancel Order**.
+This use case automates order processing, reduces manual entry, and improves customer service.
+
+### 2. Real-time Shipment Tracking for Customer Support
+**Scenario:** A customer service team needs instant access to the latest shipment status when handling inquiries.
+- Customer support queries the **Tracking API** using the AWB to fetch real-time package location and status.
+- They respond accurately to customers about estimated delivery times or delays.
+- Automated alerts can be set up based on tracking status updates received from J&T APIs.
+This use case improves support efficiency and customer satisfaction by providing up-to-date information.
+
+### 3. Shipping Rate Estimation for Checkout
+**Scenario:** An online store wants to display accurate shipping costs to customers before order submission.
+- At checkout, the platform sends an origin and destination city/district to the **Tariff Checking API**.
+- Receives shipping rates and estimated delivery times.
+- Displays available shipping service options and costs in the UI.
+- The customer selects a shipping service based on rates/ETD provided by J&T.
+This use case enhances the checkout experience with transparent shipping costs and options.
+
+### 4. Order Cancellation Before Shipment
+**Scenario:** A merchant needs to cancel an order that has been placed via the API but not yet processed by J&T.
+- The merchant calls the **API Cancel Order** passing the order ID.
+- J&T confirms whether cancellation was successful or if the order has already progressed beyond cancelable status.
+- The merchant updates the order status accordingly in their system.
+This use case provides flexibility for merchants to manage shipments and customer expectations.
+
 ### Sequence diagram
 <img width="1026" height="646" alt="gleek-VnUvmwuzjC67KndwXgEDuw" src="https://github.com/user-attachments/assets/9056aa85-2ec5-4932-a169-079ee1fe2feb" />
 
