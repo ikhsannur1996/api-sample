@@ -22,6 +22,78 @@ Welcome to the J&T Express API Integration Guide. This document provides compreh
 5. **Production API Integration**: Use production key and endpoint for final testing.
 6. **Finish**: Complete all steps and ensure the API is connected to the J&T platform.
 
+### Sequence diagram
+<img width="1026" height="646" alt="gleek-VnUvmwuzjC67KndwXgEDuw" src="https://github.com/user-attachments/assets/9056aa85-2ec5-4932-a169-079ee1fe2feb" />
+
+The sequence diagram you provided outlines the flow of interactions in a typical J&T Express API integration scenario between a User (Customer), an E-commerce platform (Ecom), and J&T Express (JNT). Here’s an explanation of each step:
+
+1. **User - Customer Order -> Ecom**  
+   The customer places an order on the e-commerce platform. This triggers the process of preparing the order for shipment.
+
+2. **Ecom - Ecom Request API -> JNT**  
+   The e-commerce platform sends an API request to J&T Express to create a shipment order. This request typically includes shipment details such as sender and receiver information, package details, and service type.
+
+3. **JNT - Return AWB Number -> Ecom**  
+   J&T Express processes the order request and responds by returning an Air Waybill (AWB) number. The AWB number is a unique tracking code that identifies the shipment.
+
+4. **Ecom - Return AWB Number -> User**  
+   The e-commerce platform receives the AWB number from J&T and sends it back to the customer. This allows the customer to track their shipment using the AWB.
+
+5. **User - Drop Off -> JNT**  
+   Finally, the customer drops off the package at a J&T service point or arranges for pickup, handing over the physical shipment to J&T Express for delivery.
+
+ 
+## Resource Requirements for J&T Express API Integration
+
+### Technical Resources
+
+- **API Developer(s):** Responsible for coding, integrating, and maintaining the API connections between your system and J&T Express.
+- **QA/Test Engineer(s):** Conduct testing in sandbox and production environments to ensure API stability, correctness, and performance.
+- **Development Environment and Tools:** Includes software, IDEs, testing tools, and repository management for development work.
+- **Access to J&T Sandbox and Production API:** Credentials and environment access needed to develop and deploy integration.
+- **Monitoring & Logging Tools:** Software to monitor API calls, track errors, and analyze performance.
+- **Up-to-date API Documentation:** Technical references and documentation from J&T for accurate integration.
+
+### Non-Technical Resources
+
+- **Project Manager:** Oversees the integration process, coordinates between technical teams and stakeholders, manages timelines and deliverables.
+- **Business Analyst:** Handles business requirement gathering, maps client data (e.g., locations) with J&T codes, and ensures alignment with operational needs.
+- **Support Team:** Provides ongoing user support post-integration, manages communications with J&T support, and handles issue resolution.
+- **Communication Channels:** Established flow of communication among client teams, J&T agents, and possibly third-party partners.
+- **Legal/Contract Management:** Handles cooperation agreements and compliance with terms of service with J&T Express.
+
+## Suggested Timeline for Integration
+
+| Phase                        | Description                               | Duration         |
+|------------------------------|-----------------------------------------|------------------|
+| Preparation                  | Requirement collection and agreement    | 1-2 weeks        |
+| API Access & Setup           | Get API keys, configure environment     | 1 week           |
+| Development & Integration    | Coding, mapping data, initial integration | 2-3 weeks        |
+| Testing                     | Functional and performance testing       | 2 weeks          |
+| Production Deployment       | Final setup and go-live                   | 1 week           |
+| Monitoring & Support        | Continuous after go-live                  | Ongoing          |
+
+
+## Pros and Cons
+
+### Pros
+
+- Streamline business operations by automating order placement and tracking processes.
+- Enhance customer experience with real-time shipment tracking.
+- Access to comprehensive shipping rate information for better decision making.
+
+### Cons
+
+- Initial setup and integration may require technical expertise.
+- Maintenance and updates to API integration may be necessary over time.
+
+
+## Considerations
+
+- Maintain open communication channels with J&T Express support teams for assistance and guidance.
+- Stay updated with any changes or updates to the API documentation provided by J&T Express.
+- Plan for scalability and future enhancements in your API integration strategy.
+
 ## Sample API Usage 
 ### Request Details
 
@@ -150,30 +222,6 @@ echo $response;
   - `status`: "Sukses" or "Error".
   - `reason`: Error reason (on failure).
 
-## Pros and Cons
-
-### Pros
-
-- Streamline business operations by automating order placement and tracking processes.
-- Enhance customer experience with real-time shipment tracking.
-- Access to comprehensive shipping rate information for better decision making.
-
-### Cons
-
-- Initial setup and integration may require technical expertise.
-- Maintenance and updates to API integration may be necessary over time.
-
-## What to be Aware of
-
-- Ensure compliance with API usage guidelines and terms.
-- Implement robust error handling mechanisms to handle potential issues.
-- Regularly monitor API performance and usage metrics to ensure optimal functionality.
-
-## Considerations
-
-- Maintain open communication channels with J&T Express support teams for assistance and guidance.
-- Stay updated with any changes or updates to the API documentation provided by J&T Express.
-- Plan for scalability and future enhancements in your API integration strategy.
 
 ## Conclusion
 
