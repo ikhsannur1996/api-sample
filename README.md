@@ -55,7 +55,7 @@ This use case enhances the checkout experience with transparent shipping costs a
 - The merchant updates the order status accordingly in their system.
 This use case provides flexibility for merchants to manage shipments and customer expectations.
 
-### Sequence diagram
+## Sequence diagram
 <img width="1026" height="646" alt="gleek-VnUvmwuzjC67KndwXgEDuw" src="https://github.com/user-attachments/assets/9056aa85-2ec5-4932-a169-079ee1fe2feb" />
 
 The sequence diagram you provided outlines the flow of interactions in a typical J&T Express API integration scenario between a User (Customer), an E-commerce platform (Ecom), and J&T Express (JNT). Here’s an explanation of each step:
